@@ -32,11 +32,26 @@ body {
   z-index: 1;
 }
 
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
 header {
-  padding: 2rem 5%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 nav {
@@ -48,19 +63,35 @@ nav {
   margin: 0 auto;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 300;
-  letter-spacing: 2px;
+.logo-link {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.header-logo {
+  height: 50px;
+  width: auto;
 }
 
 nav ul {
   display: flex;
   list-style: none;
   gap: 3rem;
-  width: fit-content;
-  margin: 0 auto;
+  margin: 0;
+  margin-left: auto;
   font-size: 1.3rem;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  padding-top: 90px;
 }
 
 nav a {
@@ -74,15 +105,11 @@ nav a:hover {
   color: #ffffff;
 }
 
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 5%;
-}
+
 
 .hero {
   text-align: center;
-  padding: 8rem 0 6rem;
+  padding: 8rem 0 10rem;
 }
 
 .hero h1 {
@@ -95,7 +122,7 @@ main {
 .hero p {
   font-size: 1.3rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 1);
   letter-spacing: 1px;
 }
 
@@ -116,7 +143,7 @@ h2 {
 #about p {
   font-size: 1.1rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 1);
   text-align: center;
   line-height: 1.8;
 }
@@ -133,7 +160,7 @@ h2 {
 }
 
 .project-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 1px;
   margin-bottom: 0.8rem;
@@ -142,7 +169,7 @@ h2 {
 .project-card p {
   font-size: 0.95rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 1);
   line-height: 1.6;
 }
 
@@ -154,7 +181,7 @@ h2 {
 #contact p {
   font-size: 1.1rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 1);
   margin-bottom: 2rem;
 }
 
@@ -181,7 +208,86 @@ footer {
   font-size: 0.9rem;
   font-weight: 300;
 }
+
 ::-webkit-scrollbar {
-    width: 12px;
-    display: none;
+    width: 6px;
+}
+
+::-webkit-scrollbar {
+  background: rgba(26, 26, 46, 0.9);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+/* Styling the new project links */
+.project-card a.project-link {
+  color: #ffffff; /* Use white color for the link */
+  text-decoration: none; /* Remove the underline */
+  display: block; /* Make the link a block element to contain the h3 */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* Inherit font styles for the h3 inside the link */
+.project-card .project-link h3 {
+  margin-bottom: 0.8rem; /* Keep the existing spacing */
+  transition: all 0.3s ease-in-out; /* Add transition for the glow effect */
+}
+
+/* Hover effect for glow and subtle scale */
+.project-card a.project-link:hover {
+  transform: scale(1.05); /* Slightly enlarge the link on hover */
+}
+
+.project-card a.project-link:hover h3 {
+  color: #ffffff; /* Change text color on hover for a subtle highlight */
+  /* This creates a light blue/cyan glow effect */
+  text-shadow: 
+    0 0 5px rgba(170, 204, 255, 0.5), 
+    0 0 10px rgba(170, 204, 255, 0.3), 
+    0 0 15px rgba(170, 204, 255, 0.1); 
+}
+
+/* Organizations section styling */
+.organizations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.organization-card {
+  text-align: center;
+}
+
+.org-link {
+  display: block;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.org-link:hover {
+  transform: scale(1.05);
+}
+
+.org-logo {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.organization-card p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+html {
+  scroll-padding-top: 90px;
 }
