@@ -4,6 +4,61 @@
   box-sizing: border-box;
 }
 
+/* Hamburger menu button (hidden on desktop) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  nav ul {
+    position: fixed;
+    top: 83px;
+    left: 0;
+    right: 0;
+    background: rgba(26, 26, 46, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    gap: 0;
+    padding: 2rem 0;
+    margin: 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  nav ul.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  nav ul li {
+    padding: 1rem 0;
+    text-align: center;
+  }
+  
+  .header-logo {
+    height: 40px;
+  }
+  
+  nav a {
+    font-size: 1.2rem;
+  }
+}
+
 body {
   overflow-x: hidden;
   background: linear-gradient(135deg, #1a1a2e 0%, #0a0e27 50%, #000000 100%);
