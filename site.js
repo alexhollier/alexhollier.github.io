@@ -14,8 +14,8 @@ class Star {
       this.size = Math.random() * 1 + 0.5;
     }
     
-    const width = screen.width;
-    const height = screen.height;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     
     this.x = Math.random() * width;
     this.y = Math.random() * height;
@@ -77,12 +77,72 @@ setTimeout(() => {
 let startTime = Date.now();
 
 function animate() {
-  const width = screen.width;
-  const height = screen.height;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
   const time = (Date.now() - startTime) / 1000;
   
   stars.forEach(s => {
     s.update(width, height, time);
   });
   requestAnimationFrame(animate);
+}
+
+const tabLinks = document.querySelectorAll('.tab-link');
+const tabContents = document.querySelectorAll('.tab-content');
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('nav ul');
+
+function switchTab(tabId) {
+  tabContents.forEach(content => {
+    content.classList.remove('active');
+  });
+  
+  tabLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  const selectedTab = document.getElementById(tabId);
+  if (selectedTab) {
+    selectedTab.classList.add('active');
+  }
+  
+  const selectedLink = document.querySelector(`[data-tab="${tabId}"]`);
+  if (selectedLink) {
+    selectedLink.classList.add('active');
+  }
+}
+
+tabLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const tabId = link.getAttribute('data-tab');
+    switchTab(tabId);
+    window.location.hash = tabId;
+    
+    if (navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+    }
+  });
+});
+
+window.addEventListener('load', () => {
+  const hash = window.location.hash.slice(1);
+  if (hash && ['home', 'about', 'projects', 'organizations', 'contact'].includes(hash)) {
+    switchTab(hash);
+  } else {
+    switchTab('home');
+  }
+});
+
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.slice(1);
+  if (hash && ['home', 'about', 'projects', 'organizations', 'contact'].includes(hash)) {
+    switchTab(hash);
+  }
+});
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
 }
