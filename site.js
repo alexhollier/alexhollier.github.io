@@ -23,18 +23,15 @@ class Star {
     this.vx = (Math.random() - 0.5) * 0.2;
     this.vy = (Math.random() - 0.5) * 0.2;
     
+    const irisColors = ['#ffc8e6', '#bed2ff', '#c8f0ff', '#ffe1be', '#e6d2ff', '#d6a8e0', '#6f8fd6', '#e0a8b8'];
     const colorRand = Math.random();
-    if (colorRand > 0.9) {
-      this.color = '#aaccff';
-    } else if (colorRand > 0.85) {
-      this.color = '#ffffaa';
-    } else if (colorRand > 0.82) {
-      this.color = '#ffcccc';
+    if (colorRand > 0.15) {
+      this.color = irisColors[Math.floor(Math.random() * irisColors.length)];
     } else {
-      this.color = '#ffffff';
+      this.color = '#8a8a99';
     }
-    
-    this.baseOpacity = Math.random() * 0.5 + 0.5;
+
+    this.baseOpacity = Math.random() * 0.4 + 0.3;
     this.twinkleSpeed = Math.random() * 0.02 + 0.01;
     this.twinkleOffset = Math.random() * Math.PI * 2;
     
@@ -68,7 +65,7 @@ class Star {
 const stars = [];
 
 setTimeout(() => {
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < 350; i++) {
     stars.push(new Star());
   }
   animate();
@@ -87,58 +84,17 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-const tabLinks = document.querySelectorAll('.tab-link');
-const tabContents = document.querySelectorAll('.tab-content');
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.page-section');
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('nav ul');
 
-function switchTab(tabId) {
-  tabContents.forEach(content => {
-    content.classList.remove('active');
-  });
-  
-  tabLinks.forEach(link => {
-    link.classList.remove('active');
-  });
-  
-  const selectedTab = document.getElementById(tabId);
-  if (selectedTab) {
-    selectedTab.classList.add('active');
-  }
-  
-  const selectedLink = document.querySelector(`[data-tab="${tabId}"]`);
-  if (selectedLink) {
-    selectedLink.classList.add('active');
-  }
-}
-
-tabLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const tabId = link.getAttribute('data-tab');
-    switchTab(tabId);
-    window.location.hash = tabId;
-    
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
     if (navMenu.classList.contains('active')) {
       navMenu.classList.remove('active');
     }
   });
-});
-
-window.addEventListener('load', () => {
-  const hash = window.location.hash.slice(1);
-  if (hash && ['home', 'about', 'projects', 'organizations', 'contact'].includes(hash)) {
-    switchTab(hash);
-  } else {
-    switchTab('home');
-  }
-});
-
-window.addEventListener('hashchange', () => {
-  const hash = window.location.hash.slice(1);
-  if (hash && ['home', 'about', 'projects', 'organizations', 'contact'].includes(hash)) {
-    switchTab(hash);
-  }
 });
 
 if (menuToggle) {
@@ -146,3 +102,15 @@ if (menuToggle) {
     navMenu.classList.toggle('active');
   });
 }
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+      });
+    }
+  });
+}, { rootMargin: '-120px 0px -60% 0px', threshold: 0 });
+
+sections.forEach(section => sectionObserver.observe(section));
