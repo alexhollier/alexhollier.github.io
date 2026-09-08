@@ -6,7 +6,7 @@
 
 :root {
   --ink: #0d1b2a;
-  --accent: #415a77;
+  --accent: rgb(65, 90, 119);
   --accent-deep: #1b263b;
   --accent-light: #778da9;
   --sage: #778da9;
@@ -108,6 +108,7 @@ nav {
   align-items: center;
   width: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
 .menu-toggle {
@@ -126,6 +127,21 @@ nav ul {
   gap: 2.25rem;
   margin: 0;
   font-size: 1rem;
+}
+
+.nav-logo-link {
+  display: block;
+  line-height: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-logo {
+  height: 28px;
+  width: auto;
+  display: block;
 }
 
 nav a {
