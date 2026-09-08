@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Alex Hollier</title>
+    <link rel="icon" type="image/svg" href="personal_logo.png">
+    <link rel="stylesheet" href="site.css">
+</head>
+
+<body>
+    <div class="star-container" id="container"></div>
+
+    <div class="content">
+        <header>
+            <nav>
+                <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                    <li><a href="on-air.html" class="nav-link">On Air</a></li>
+                    <li><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Experience -->
+            <div id="experience" class="page-section red">
+                <div class="section-inner">
+                    <span class="section-kicker reveal">02 — Portfolio</span>
+                    <h2 class="reveal">Experience</h2>
+
+                    <div class="experience-rows">
+                        <div class="experience-row reveal">
+                            <span class="experience-num">01</span>
+                            <div class="experience-body">
+                                <div class="experience-header">
+                                    <h3>AI and Automation Engineer</h3>
+                                    <span class="experience-dates">Aug 2026 – Present</span>
+                                </div>
+                                <p class="experience-org">Manship School of Mass Communication, LSU</p>
+                                <ul>
+                                    <li>Built a custom-configured LLM-powered wiki for localized news retrieval across a statewide journalism network.</li>
+                                    <li>Designed automated content pipelines with n8n, Make, and LLM agents to route and publish stories, newsletters, and social posts across platforms.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-row reveal">
+                            <span class="experience-num">02</span>
+                            <div class="experience-body">
+                                <div class="experience-header">
+                                    <h3>AI Engineering Contractor</h3>
+                                    <span class="experience-dates">Aug 2025 – Dec 2025</span>
+                                </div>
+                                <p class="experience-org">Entergy</p>
+                                <ul>
+                                    <li>Led 5 engineers to build and deploy an AI-driven career pathing tool with Python, React, and FastAPI on AWS, modeling 6,000+ roles for 10k+ employees.</li>
+                                    <li>Built an LLM-based graph model reaching 92% accuracy in predicting career progressions.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-row reveal">
+                            <span class="experience-num">03</span>
+                            <div class="experience-body">
+                                <div class="experience-header">
+                                    <h3>Software Engineering Intern</h3>
+                                    <span class="experience-dates">May 2026 – Aug 2026</span>
+                                </div>
+                                <p class="experience-org">Fast Enterprises, South Carolina Department of Revenue</p>
+                                <ul>
+                                    <li>Shipped C# features and UI updates for a tax portal used by 700+ officers and taxpayers.</li>
+                                    <li>Optimized SQL queries across databases with 2M+ taxpayer records, improving performance and data accuracy.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-row reveal">
+                            <span class="experience-num">04</span>
+                            <div class="experience-body">
+                                <div class="experience-header">
+                                    <h3>Robotics Research Assistant</h3>
+                                    <span class="experience-dates">Aug 2025 – Aug 2026</span>
+                                </div>
+                                <p class="experience-org">College of Engineering, LSU</p>
+                                <ul>
+                                    <li>Built a RobotStudio add-in using modular C# architecture and Git version control.</li>
+                                    <li>Built data pipelines to sanitize, structure, and validate technical inputs for LLM-driven robotics features.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div id="projects" class="page-section red">
+                <div class="section-inner">
+                    <span class="section-kicker reveal">03 — Projects</span>
+                    <h2 class="reveal">Projects</h2>
+
+                    <div class="project-rows">
+                        <div class="project-row reveal">
+                            <a href="https://www.entergy.com/" class="project-row-media">
+                                <img src="New-Entergy-logo.png" alt="Entergy AI Career Pathing Tool" class="project-media-img entergy-bg">
+                            </a>
+                            <div class="project-row-body">
+                                <h3>Entergy AI Career Pathing Tool</h3>
+                                <p>Led a 5-engineer team to build an AI-driven career pathing tool with Python, React, and FastAPI on AWS — an LLM graph model reaching 92% accuracy across 6,000+ roles for 10k+ employees.</p>
+                                <a href="https://www.entergy.com/" class="project-row-link">View →</a>
+                            </div>
+                        </div>
+
+                        <div class="project-row reveal reverse">
+                            <a href="https://github.com/alexhollier/Rooted" class="project-row-media">
+                                <img src="rooted_logo.png" alt="Rooted" class="project-media-img rooted-bg">
+                            </a>
+                            <div class="project-row-body">
+                                <h3>Rooted</h3>
+                                <p>A 4-feature iOS/Android volunteer app — opportunity discovery, map view, QR check-in, and hour tracking — with a scalable sign-up flow tested across platforms.</p>
+                                <a href="https://github.com/alexhollier/Rooted" class="project-row-link">View on GitHub →</a>
+                            </div>
+                        </div>
+
+                        <div class="project-row reveal">
+                            <a href="https://github.com/alexhollier/Melodify" class="project-row-media">
+                                <img src="melodify.PNG" alt="Melodify" class="project-media-img melodify-bg">
+                            </a>
+                            <div class="project-row-body">
+                                <h3>Melodify</h3>
+                                <p>An iOS/Android app for learning music theory, with real-time audio recording and playback and practice modules covering rhythm, notation, and fundamentals.</p>
+                                <a href="https://github.com/alexhollier/Melodify" class="project-row-link">View on GitHub →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    <script src="site.js"></script>
+</body>
+
+</html>

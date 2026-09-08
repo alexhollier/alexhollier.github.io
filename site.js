@@ -23,12 +23,12 @@ class Star {
     this.vx = (Math.random() - 0.5) * 0.2;
     this.vy = (Math.random() - 0.5) * 0.2;
     
-    const irisColors = ['#ffc8e6', '#bed2ff', '#c8f0ff', '#ffe1be', '#e6d2ff', '#d6a8e0', '#6f8fd6', '#e0a8b8'];
+    const irisColors = ['#0d1b2a', '#1b263b', '#415a77', '#778da9'];
     const colorRand = Math.random();
     if (colorRand > 0.15) {
       this.color = irisColors[Math.floor(Math.random() * irisColors.length)];
     } else {
-      this.color = '#8a8a99';
+      this.color = '#415a77';
     }
 
     this.baseOpacity = Math.random() * 0.4 + 0.3;
@@ -85,7 +85,6 @@ function animate() {
 }
 
 const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('.page-section');
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('nav ul');
 
@@ -103,14 +102,14 @@ if (menuToggle) {
   });
 }
 
-const sectionObserver = new IntersectionObserver((entries) => {
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
-      });
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
     }
   });
-}, { rootMargin: '-120px 0px -60% 0px', threshold: 0 });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
-sections.forEach(section => sectionObserver.observe(section));
+revealEls.forEach(el => revealObserver.observe(el));
